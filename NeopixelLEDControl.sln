@@ -3,16 +3,50 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeopixelLEDControl", "NeopixelLEDControl\NeopixelLEDControl.csproj", "{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeopixelSDK", "NeopixelSDK\NeopixelSDK.csproj", "{16F3E749-526C-42DC-B2BB-0669483FDF47}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ChassisLEDs", "ChassisLEDs\ChassisLEDs.vcxproj", "{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
 		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Release|Win32.ActiveCfg = Release|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{16F3E749-526C-42DC-B2BB-0669483FDF47}.Release|Win32.ActiveCfg = Release|Any CPU
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Win32.ActiveCfg = Debug|Win32
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Win32.Build.0 = Debug|Win32
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Any CPU.ActiveCfg = Release|Win32
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Win32.ActiveCfg = Release|Win32
+		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
