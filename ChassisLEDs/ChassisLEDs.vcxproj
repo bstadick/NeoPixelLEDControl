@@ -60,6 +60,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>D:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino;D:\Program Files (x86)\Arduino\hardware\arduino\variants\micro;D:\Program Files (x86)\Arduino\libraries\EEPROM;D:\Program Files (x86)\Arduino\libraries\EEPROM\utility;D:\Bryan Stadick\SkyDrive\Documents\Arduino\libraries\Adafruit_NeoPixel;D:\Bryan Stadick\SkyDrive\Documents\Arduino\libraries\Adafruit_NeoPixel\utility;d:\program files (x86)\arduino\hardware\tools\avr\avr\include\;d:\program files (x86)\arduino\hardware\tools\avr\avr\include\avr\;d:\program files (x86)\arduino\hardware\tools\avr\avr\;d:\program files (x86)\arduino\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>

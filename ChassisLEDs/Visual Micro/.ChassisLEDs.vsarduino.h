@@ -31,6 +31,8 @@ extern "C" void __cxa_pure_virtual() {;}
 
 //
 //
+void serialCheck();
+void setMonitorBacklight(uint32_t  c1, uint32_t c2);
 void colorWipe(uint32_t c, uint8_t wait);
 void rainbow(uint8_t wait);
 void rainbowCycle(uint8_t wait);

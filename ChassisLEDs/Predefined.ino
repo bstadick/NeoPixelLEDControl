@@ -12,6 +12,7 @@ void rainbow(uint8_t wait) {
 	uint16_t i, j;
 
 	for(j=0; j<256; j++) {
+              serialCheck();
 		for(i=0; i<numPixels; i++) {
 			strip.setPixelColor(i, Wheel((i+j) & 255));
 		}
@@ -22,15 +23,16 @@ void rainbow(uint8_t wait) {
 
 // Slightly different, this makes the rainbow equally distributed throughout
 void rainbowCycle(uint8_t wait) {
-uint16_t i, j;
-
-	for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
-		for(i=0; i< numPixels; i++) {
-			strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
-		}
-		strip.show();
-		delay(wait);
-	}
+  uint16_t i, j;
+  for(j=0; j<256*5; j++) { // 5 cycles of all colors on wheel
+    serialCheck();
+    
+    for(i=0; i< numPixels; i++) {
+      strip.setPixelColor(i, Wheel(((i * 256 / strip.numPixels()) + j) & 255));
+    }
+    strip.show();
+    delay(wait);
+  }
 }
 
 // Input a value 0 to 255 to get a color value.
@@ -49,8 +51,11 @@ uint32_t Wheel(byte WheelPos) {
 
 // Marches three colors along the strip
 void march(uint32_t c1, uint32_t c2, uint32_t c3, uint8_t wait, uint16_t durations) {
+  
   uint8_t state = 0;
   for(uint16_t j = 0; j < durations; j++) { 
+    serialCheck();
+    
     if(state == 0) {
       for(uint16_t i = 2; i < numPixels; i = i + 3) {
           strip.setPixelColor(i - 2, c1);
@@ -82,8 +87,11 @@ void march(uint32_t c1, uint32_t c2, uint32_t c3, uint8_t wait, uint16_t duratio
 
 // Switches every other light between two colors
 void alternate(uint32_t c1, uint32_t c2, uint8_t wait, uint16_t durations) {
+  
   boolean state = true;
   for(uint16_t j = 0; j < durations; j++) { 
+    serialCheck();
+    
     if(state) {
       for(uint16_t i = 1; i < numPixels; i = i + 2) {
           strip.setPixelColor(i - 1, c1);

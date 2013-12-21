@@ -4,11 +4,14 @@
 
 
 #define PIN 6
+#define MONPIN 7
 #define ADDRESS 0
 #define NMEALENGTH 22
 
 byte numPixels = 30;
 byte wait = 50;
+
+char buff[7];
 
 // Message = $LED,command,R,G,B,time*checksum
 // command = 0 to numPixels and A through Y (number -> individual LED, letter -> preset sequence)
@@ -23,31 +26,39 @@ byte wait = 50;
 //   NEO_GRB     Pixels are wired for GRB bitstream (most NeoPixel products)
 //   NEO_RGB     Pixels are wired for RGB bitstream (v1 FLORA pixels, not v2)
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(numPixels, PIN, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel monitorStrip = Adafruit_NeoPixel(numPixels, MONPIN, NEO_GRB + NEO_KHZ800);
 
 //NMEA nmea = NMEA();
 
 void setup() {
   Serial.begin(9600);
-  Serial.setTimeout(10000);
   
   byte numPixelsValue = EEPROM.read(ADDRESS);
   
   Serial.setTimeout(100);
 
   strip.begin();
+  monitorStrip.begin();
   strip.show(); // Initialize all pixels to 'off'
+  monitorStrip.show();
+  
+  delay(1000);
+  
+  setMonitorBacklight(monitorStrip.Color(255, 255, 255), monitorStrip.Color(255, 255, 255));
 }
 
 void loop() {
   
-	//nmea.read();
-
-	// Some example procedures showing how to display to the pixels:
+  
+  
+  // Some example procedures showing how to display to the pixels:
   for(uint8_t i = 0; i < 10; i++) {
     colorWipe(strip.Color(255, 0, 0), wait); // Red
     delay(250);
+    serialCheck();
     colorWipe(strip.Color(0, 255, 0), wait); // Green
     delay(250);
+    serialCheck();
   }
 //	colorWipe(strip.Color(0, 0, 255), wait); // Blue
 //	rainbow(20);
@@ -57,4 +68,27 @@ void loop() {
   alternate(strip.Color(255, 0, 0), strip.Color(0, 255, 0), 500, 100);
 }
 
+void serialCheck() {
+  
+  // $r1g1b1r2g2b2/ETX
+  if(Serial.available() >= 7) {
+   if(Serial.find("$")) {
+     if(Serial.available() >= 6) {
+       if(Serial.readBytesUntil((char)3, buff, 7) >= 6)
+         setMonitorBacklight(monitorStrip.Color(buff[0], buff[1], buff[2]), monitorStrip.Color(buff[3], buff[4], buff[5]));
+     }
+   }
+  }
+}
 
+void setMonitorBacklight(uint32_t  c1, uint32_t c2) {
+  for(uint8_t i = 0; i < numPixels/2; i++) {
+     monitorStrip.setPixelColor(i, c1);
+  }
+  monitorStrip.show();
+  
+  for(uint8_t i = 15; i < numPixels; i++) {
+     monitorStrip.setPixelColor(i, c2);
+  }
+  monitorStrip.show();
+}
