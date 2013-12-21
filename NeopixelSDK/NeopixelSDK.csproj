@@ -41,14 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataReceivedEventArgs.cs" />
     <Compile Include="Neopixel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Serial\Serial.csproj">
-      <Project>{530257a7-3afd-4bf0-a569-5ce09c5ef1c5}</Project>
-      <Name>Serial</Name>
-    </ProjectReference>
+    <Compile Include="Serial.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

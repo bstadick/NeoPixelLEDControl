@@ -110,10 +110,6 @@
       <Project>{af55d2d3-9f13-41e0-8ab0-0b571432a1a2}</Project>
       <Name>NeopixelSDK</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Serial\Serial.csproj">
-      <Project>{530257a7-3afd-4bf0-a569-5ce09c5ef1c5}</Project>
-      <Name>Serial</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="monitor_icon.png" />

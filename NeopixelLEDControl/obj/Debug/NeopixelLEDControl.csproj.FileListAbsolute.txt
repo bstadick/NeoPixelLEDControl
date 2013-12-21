@@ -12,6 +12,4 @@ D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDContr
 D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelLEDControl\obj\Debug\NeopixelLEDControl.exe
 D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelLEDControl\obj\Debug\NeopixelLEDControl.pdb
 D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelLEDControl\bin\Debug\NeopixelSDK.dll
-D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelLEDControl\bin\Debug\Serial.dll
 D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelLEDControl\bin\Debug\NeopixelSDK.pdb
-D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelLEDControl\bin\Debug\Serial.pdb
