@@ -33,8 +33,6 @@ Adafruit_NeoPixel monitorStrip = Adafruit_NeoPixel(numPixels, MONPIN, NEO_GRB + 
 void setup() {
   Serial.begin(9600);
   
-  byte numPixelsValue = EEPROM.read(ADDRESS);
-  
   Serial.setTimeout(100);
 
   strip.begin();
@@ -44,12 +42,12 @@ void setup() {
   
   delay(1000);
   
-  setMonitorBacklight(monitorStrip.Color(255, 255, 255), monitorStrip.Color(255, 255, 255));
+  setMonitorFromMemory();
 }
 
 void loop() {
   
-  
+  setMonitorFromMemory();
   
   // Some example procedures showing how to display to the pixels:
   for(uint8_t i = 0; i < 10; i++) {
@@ -74,11 +72,24 @@ void serialCheck() {
   if(Serial.available() >= 7) {
    if(Serial.find("$")) {
      if(Serial.available() >= 6) {
-       if(Serial.readBytesUntil((char)3, buff, 7) >= 6)
+       if(Serial.readBytesUntil((char)3, buff, 7) >= 6) {
          setMonitorBacklight(monitorStrip.Color(buff[0], buff[1], buff[2]), monitorStrip.Color(buff[3], buff[4], buff[5]));
+         EEPROM.write(ADDRESS, buff[0]);
+         EEPROM.write(ADDRESS+1, buff[1]);
+         EEPROM.write(ADDRESS+2, buff[2]);
+         EEPROM.write(ADDRESS+3, buff[3]);
+         EEPROM.write(ADDRESS+4, buff[4]);
+         EEPROM.write(ADDRESS+5, buff[5]);
+       }
      }
    }
   }
+}
+
+void setMonitorFromMemory() {
+  setMonitorBacklight(
+    monitorStrip.Color(EEPROM.read(ADDRESS), EEPROM.read(ADDRESS+1), EEPROM.read(ADDRESS+2))
+    , monitorStrip.Color(EEPROM.read(ADDRESS+3), EEPROM.read(ADDRESS+4), EEPROM.read(ADDRESS+5)));
 }
 
 void setMonitorBacklight(uint32_t  c1, uint32_t c2) {
@@ -92,3 +103,4 @@ void setMonitorBacklight(uint32_t  c1, uint32_t c2) {
   }
   monitorStrip.show();
 }
+
