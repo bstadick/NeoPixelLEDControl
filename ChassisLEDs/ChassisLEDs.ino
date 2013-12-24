@@ -40,7 +40,7 @@ void setup() {
   strip.show(); // Initialize all pixels to 'off'
   monitorStrip.show();
   
-  delay(1000);
+  delay(100);
   
   setMonitorFromMemory();
 }
@@ -96,8 +96,7 @@ void setMonitorBacklight(uint32_t  c1, uint32_t c2) {
   for(uint8_t i = 0; i < numPixels/2; i++) {
      monitorStrip.setPixelColor(i, c1);
   }
-  monitorStrip.show();
-  
+ 
   for(uint8_t i = 15; i < numPixels; i++) {
      monitorStrip.setPixelColor(i, c2);
   }
