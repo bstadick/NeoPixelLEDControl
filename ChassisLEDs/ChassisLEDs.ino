@@ -73,7 +73,6 @@ void serialCheck() {
    if(Serial.find("$")) {
      if(Serial.available() >= 6) {
        if(Serial.readBytesUntil((char)3, buff, 7) >= 6) {
-         setMonitorBacklight(monitorStrip.Color(buff[0], buff[1], buff[2]), monitorStrip.Color(buff[3], buff[4], buff[5]));
          EEPROM.write(ADDRESS, buff[0]);
          EEPROM.write(ADDRESS+1, buff[1]);
          EEPROM.write(ADDRESS+2, buff[2]);
@@ -84,6 +83,7 @@ void serialCheck() {
      }
    }
   }
+  setMonitorFromMemory();
 }
 
 void setMonitorFromMemory() {
