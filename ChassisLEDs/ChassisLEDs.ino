@@ -47,23 +47,30 @@ void setup() {
 
 void loop() {
   
-  setMonitorFromMemory();
+    setMonitorFromMemory();
   
-  // Some example procedures showing how to display to the pixels:
-  for(uint8_t i = 0; i < 10; i++) {
-    colorWipe(strip.Color(255, 0, 0), wait); // Red
-    delay(250);
-    serialCheck();
-    colorWipe(strip.Color(0, 255, 0), wait); // Green
-    delay(250);
-    serialCheck();
-  }
-//	colorWipe(strip.Color(0, 0, 255), wait); // Blue
-//	rainbow(20);
-//	rainbowCycle(20);
-
-  march(strip.Color(255, 0, 0), strip.Color(0, 255, 0), strip.Color(255, 200, 0), 500, 100);
-  alternate(strip.Color(255, 0, 0), strip.Color(0, 255, 0), 500, 100);
+    // Some example procedures showing how to display to the pixels:
+    for(int i = 0; i < 5; i++) {
+        colorWipe(strip.Color(255, 0, 0), wait); // Red
+        serialCheck();
+        colorWipe(strip.Color(0, 255, 0), wait); // Green
+        serialCheck();
+        colorWipe(strip.Color(0, 0, 255), wait); // Blue
+        serialCheck();
+    }
+    
+    for(int i = 0; i < 5; i++) {
+        rainbow(20);
+        serialCheck();
+    }
+    
+    for(int i = 0; i < 5; i++) {
+        rainbowCycle(20);
+        serialCheck();
+    }
+    
+    march(strip.Color(255, 0, 0), strip.Color(0, 255, 0), strip.Color(0, 0, 255), 500, 100);
+    //alternate(strip.Color(255, 0, 0), strip.Color(0, 255, 0), 500, 100);
 }
 
 void serialCheck() {
