@@ -1,5 +1,0 @@
-D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelSDK\bin\Release\NeopixelSDK.dll
-D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelSDK\bin\Release\NeopixelSDK.pdb
-D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelSDK\obj\Release\NeopixelSDK.csprojResolveAssemblyReference.cache
-D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelSDK\obj\Release\NeopixelSDK.dll
-D:\Bryan Stadick\SkyDrive\Documents\Visual Studio 2012\Projects\NeopixelLEDControl\NeopixelSDK\obj\Release\NeopixelSDK.pdb
