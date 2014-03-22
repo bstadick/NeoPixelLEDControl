@@ -29,12 +29,10 @@ Global
 		{02D1D1D1-9808-402D-AE0F-A93D15DE4B5D}.Release|Win32.ActiveCfg = Release|Any CPU
 		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Mixed Platforms.Build.0 = Debug|Win32
 		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Win32.ActiveCfg = Debug|Win32
 		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Debug|Win32.Build.0 = Debug|Win32
 		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Any CPU.ActiveCfg = Release|Win32
 		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Win32.ActiveCfg = Release|Win32
 		{34BA0CC9-2825-4012-9F14-2FE9AFEC5254}.Release|Win32.Build.0 = Release|Win32
 		{AF55D2D3-9F13-41E0-8AB0-0B571432A1A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
