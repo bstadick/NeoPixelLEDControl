@@ -1,8 +1,8 @@
 #include <EEPROM.h>
 #include <Adafruit_NeoPixel.h>
 
-#define PIN 0
-#define MONPIN 1
+#define PIN 6
+#define MONPIN 7
 #define ADDRESS 0
 #define NMEALENGTH 22
 #define MAXPIXELS 60
@@ -11,7 +11,6 @@ byte numPixels = 30; // case LEDs
 byte numMonitorPixels = 30; // enough for 4 monitors with 15 each
 byte wait = 50;
 boolean useFlair = true; // if the case should use patterns or just simple solid colors
-boolean christmas = false;
 
 char buff[255];
 
@@ -55,9 +54,10 @@ void setup() {
 void loop() {
   
     serialCheck();
+    setMonitorFromMemory();
     
     // wipes a solid color read, then green, then blue. Does this 5 times
-    if(useFlair && !christmas) {
+    if(useFlair) {
         for(int i = 0; i < 5; i++) {
             
             colorWipe(strip.Color(255, 0, 0), wait); // Red
@@ -79,33 +79,9 @@ void loop() {
                 break;
         }
     }
-    // wipes a solid color read, then green. Does this 5 times
-    else if(useFlair)
-    {
-        for(int i = 0; i < 5; i++) {
-            
-            colorWipe(strip.Color(255, 0, 0), wait); // Red
-            
-            serialCheck(); // perform periodic serial checks between each pre-defined pattern call
-            if(!useFlair) // serial says not to use flair now so break from this loop to change to solid color
-                break;
-                
-            colorWipe(strip.Color(0, 255, 0), wait); // Green
-            
-            serialCheck();
-            if(!useFlair)
-                break;
-                
-            colorWipe(strip.Color(255, 255, 0), wait); // Green
-            
-            serialCheck();
-            if(!useFlair)
-                break;
-        }
-    }
     
     // performs a rainbow wipe five times
-    if(useFlair && !christmas) {
+    if(useFlair) {
         for(int i = 0; i < 5; i++) {
             rainbow(20);
             serialCheck();
@@ -115,7 +91,7 @@ void loop() {
     }
     
     // performs a rainbow cycle five times
-    if(useFlair && !christmas) {
+    if(useFlair) {
         for(int i = 0; i < 5; i++) {
             rainbowCycle(20);
             serialCheck();
@@ -124,16 +100,9 @@ void loop() {
         }
     }
     
-    // marches red, green and gold
-    if(useFlair && christmas) {
-        march(strip.Color(255, 0, 0), strip.Color(0, 255, 0), strip.Color(255, 255, 0), 500, 100);
-        serialCheck();
-    }
-    
-    // alternating red/green pattern
-    if(useFlair && christmas) {
-        alternate(strip.Color(255, 0, 0), strip.Color(0, 255, 0), 500, 100);
-        serialCheck();
+    if(useFlair) {
+        //march(strip.Color(255, 0, 0), strip.Color(0, 255, 0), strip.Color(0, 0, 255), 500, 100);
+        //alternate(strip.Color(255, 0, 0), strip.Color(0, 255, 0), 500, 100);
     }
 }
 
@@ -159,6 +128,7 @@ void serialCheck() {
                 }
             }
         }
+        setMonitorFromMemory();
     }
     else if(avail >= 2) { // inquiry for current saved values (currently not working)  
         if(Serial.find("%")) {
@@ -170,7 +140,6 @@ void serialCheck() {
             }
         }
     }
-    setMonitorFromMemory();
 }
 
 // reads the memory to set the monitor backlight and case lights to the previous state
