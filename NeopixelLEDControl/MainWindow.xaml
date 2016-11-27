@@ -26,8 +26,8 @@
                 <RadioButton x:Name="radio2" Content="  2" GroupName="radioNumMons" HorizontalAlignment="Center" Click="RadioButtonClick" IsChecked="True"/>
                 <RadioButton x:Name="radio3" Content="  3" GroupName="radioNumMons" HorizontalAlignment="Center" Click="RadioButtonClick"/>
                 <RadioButton x:Name="radio4" Content="  4" GroupName="radioNumMons" HorizontalAlignment="Center" Click="RadioButtonClick"/>
-                <TextBlock Text="Flair Toggle" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,10,0,10" />
-                <Button x:Name="buttonFlair" Content="On" Margin="10,0,10,10" Click="buttonFlairClick" />
+                <TextBlock Text="Mode Select" HorizontalAlignment="Center" TextAlignment="Center" Margin="0,10,0,10" />
+                <ComboBox x:Name="modeSelect" />
             </StackPanel>
 
             <StackPanel x:Name="stackC1" Orientation="Vertical" Grid.Column="1" Margin="10">

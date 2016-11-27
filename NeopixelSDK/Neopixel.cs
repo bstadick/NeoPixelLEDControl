@@ -12,6 +12,33 @@ namespace NeopixelSDK
     // A delegate type for hooking up saved available notifications.
     public delegate void SavedAvailableEventHandler(object sender, EventArgs e);
 
+    /// <summary>
+    /// The different display modes of the Neopixels
+    /// </summary>
+    public enum DisplayMode
+    {
+        /// <summary>
+        /// Pixels are set to a single solid color
+        /// </summary>
+        Solid = 1,
+        /// <summary>
+        /// Pixels display several different patterns
+        /// </summary>
+        Flair,
+        /// <summary>
+        /// Pixels display a festive Christmas theme
+        /// </summary>
+        Christmas,
+        /// <summary>
+        /// Pixels display a rainbow sweep
+        /// </summary>
+        Rainbow,
+        /// <summary>
+        /// Pixels display a rainbow sweep on monitors as well
+        /// </summary>
+        AllRainbow
+    }
+
     public class Neopixel
     {
 
@@ -144,16 +171,16 @@ namespace NeopixelSDK
             }
         }
 
-        private bool _flair = true;
+        private byte _mode = (byte)DisplayMode.Solid;
         /// <summary>
         /// Gets or sets if chassis LED flair should be used.
         /// </summary>
-        public bool Flair
+        public DisplayMode Mode
         {
-            get { return _flair; }
+            get { return (DisplayMode)_mode; }
             set
             {
-                _flair = value;
+                _mode = (byte)value;
                 sendMessage();
             }
         }
@@ -340,7 +367,7 @@ namespace NeopixelSDK
             b = data[18];
             _chassis = Color.FromArgb(r, g, b);
             _chassisCount = data[19];
-            _flair = (data[20] == 2);
+            _mode = data[20];
 
             OnSavedAvailable(EventArgs.Empty);
 
@@ -396,7 +423,7 @@ namespace NeopixelSDK
         {
             _chassis = chassis;
             _chassisCount = chassisCount;
-            _flair = false;
+            _mode = (byte)DisplayMode.Solid;
             sendMessage();
         }
 
@@ -429,7 +456,7 @@ namespace NeopixelSDK
             msg.Add(_chassis.G);
             msg.Add(_chassis.B);
             msg.Add(_chassisCount);
-            msg.Add((byte)(_flair ? 2 : 1)); // 2 = true, 1 = false (sending 0 is hard)
+            msg.Add(_mode);
             msg.Insert(1, (byte)(msg.Count - 1)); // insert number of bytes in message after leading character
 
             if (_port != null && _port.IsOpen)

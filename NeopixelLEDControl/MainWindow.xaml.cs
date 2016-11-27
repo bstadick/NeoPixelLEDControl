@@ -41,7 +41,7 @@ namespace NeopixelLEDControl
         private byte _numPixelsM3 = 15;
         private byte _numPixelsM4 = 15;
         private byte _numPixelsC = 30;
-        private bool _flair = true;
+        private DisplayMode _mode = DisplayMode.Solid;
 
         /// <summary>
         /// Constructor
@@ -64,6 +64,16 @@ namespace NeopixelLEDControl
         {
             comboPortList.ItemsSource = Neopixel.AvailablePorts();
             RadioButtonClick(radio2, null);
+
+            List<ComboBoxItem> modes = new List<ComboBoxItem>();
+            modes.Add(new ComboBoxItem { Content = "Solid", Tag = (byte)DisplayMode.Solid, IsSelected = true });
+            modes.Add(new ComboBoxItem { Content = "Flair", Tag = (byte)DisplayMode.Flair });
+            modes.Add(new ComboBoxItem { Content = "Christmas", Tag = (byte)DisplayMode.Christmas });
+            modes.Add(new ComboBoxItem { Content = "Rainbow", Tag = (byte)DisplayMode.Rainbow });
+            modes.Add(new ComboBoxItem { Content = "All Rainbow", Tag = (byte)DisplayMode.AllRainbow });
+
+            modeSelect.ItemsSource = modes;
+            modeSelect.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -206,8 +216,7 @@ namespace NeopixelLEDControl
             rectC.Fill = new SolidColorBrush(System.Windows.Media.Color.FromRgb(_pixel.Chassis.R, _pixel.Chassis.G, _pixel.Chassis.B));
             textBoxCP.Text = _pixel.ChassisCount.ToString();
 
-            _flair = _pixel.Flair;
-            buttonFlair.Content = (_flair ? "On" : "Off");
+            modeSelect.SelectedIndex = (byte)_pixel.Mode - 1;
 
             if (_pixel.MonitorFourCount != 0)
             {
@@ -248,10 +257,10 @@ namespace NeopixelLEDControl
             {
                 _pixel.SetMonitorPixels(_numPixelsM1, _numPixelsM2, _numPixelsM3, _numPixelsM4);
                 _pixel.SetMonitorColors(_monitor1, _monitor2, _monitor3, _monitor4);
-                if (!_flair)
+                byte mode = (byte)((ComboBoxItem)modeSelect.SelectedValue).Tag;
+                _pixel.Mode = (DisplayMode)mode;
+                if (_pixel.Mode == DisplayMode.Solid)
                     _pixel.SetChassisColors(_chassis, _numPixelsC);
-                else
-                    _pixel.Flair = true;
                 textBlockFailMsg.Visibility = Visibility.Hidden;
             }
             else
@@ -362,17 +371,6 @@ namespace NeopixelLEDControl
                     break;
             }
             this.UpdateLayout();
-        }
-
-        /// <summary>
-        /// Toggles case (chassis) LED flair on and off.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonFlairClick(object sender, RoutedEventArgs e)
-        {
-            _flair = !_flair;
-            buttonFlair.Content = (_flair ? "On" : "Off");
         }
     }
 }
